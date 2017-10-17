@@ -24,8 +24,8 @@ for n in 253..256
 
 		email = gmail.compose do
 		  to "'"+myString+"'"
-		  subject "Colossus of Destiny"
-		  body "Album disponible sur bandcamp en ecoute gratuite ici : https://colossusofdestiny.bandcamp.com/album/in-lesser-brightness"
+		  subject ""
+		  body ""
 		end
 		email.deliver!
 

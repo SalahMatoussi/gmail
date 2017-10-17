@@ -9,7 +9,7 @@ require 'pp'
 # first time and save it to config.json file for later usages.
 # See this document to learn how to create config.json:
 # https://github.com/gimite/google-drive-ruby/blob/master/doc/authorization.md
-# session = GoogleDrive.login("juliancito75@gmail.com", "nacaocapoeira")
+# session = GoogleDrive.login("", "")
 
 def get_the_email_of_a_townhal_from_its_webpage(url)
 	page = Nokogiri::HTML(open("#{url}"))
@@ -24,12 +24,12 @@ def get_all_the_urls_of_seine_maritime_townhalls(url)
 	 towns_mail_list = Hash.new()
 	 i = 3
 
-	page = Nokogiri::HTML(open("http://annuaire-des-mairies.com/seine-maritime.html"))
+	page = Nokogiri::HTML(open("http://annuaire-des-mairies.com/dansle8.html"))
 	page.xpath('//a[@class="lientxt"]').each do |town|
 		town_name = town.text.downcase
 		town_name = town_name.split(' ').join('-')
     proper_town_name = town_name.capitalize
-		url = "http://annuaire-des-mairies.com/76/#{town_name}.html"
+		url = "http://annuaire-des-mairies.com/8/#{town_name}.html"
 		towns_mail_list[proper_town_name] = get_the_email_of_a_townhal_from_its_webpage(url)
 	end
 
@@ -49,4 +49,4 @@ end
 
 
 
-get_all_the_urls_of_seine_maritime_townhalls("http://annuaire-des-mairies.com/seine-maritime.html")
+get_all_the_urls_of_seine_maritime_townhalls("http://annuaire-des-mairies.com/dansle8.html")
